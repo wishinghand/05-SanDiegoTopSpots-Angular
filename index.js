@@ -1,12 +1,22 @@
+//bootstrap the app, calling it 'app' for simplicity
 angular.module('app', []);
 
-angular.module('app').controller('HomeCtrl', function($scope, $http){
-    $http({
-        method: 'GET',
-        url: 'topspots.json'
-    }).then(function successCallback(response){
-        $scope.hotSpots = response.data;
-    }, function errorCallback(response){
-
+//new controller
+angular.module('app').controller('HomeCtrl', function($scope, hotSpotsFactory){
+    // var ctrl = this;
+    // ctrl.topSpots = [];
+    hotSpotsFactory.listSpots(function (topSpots) {
+        $scope.hotSpots = topSpots.data;
     })
 });
+
+angular.module('app').factory('hotSpotsFactory', function($http){
+    return {
+        listSpots: function(response, error){
+            $http({
+            method: 'GET',
+            url: 'topspots.json'
+        }).then(response, error);
+        }
+    }
+})
