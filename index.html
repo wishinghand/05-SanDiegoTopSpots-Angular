@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular HotSpots</title>
+    <link rel="stylesheet" href="bower_components/pure/pure.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="HomeCtrl">
+    <table class="pure-table pure-table-striped pure-table-bordered pure-table-horizontal">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hotSpot in hotSpots">
+                <td>{{hotSpot.name}}</td>
+                <td>{{hotSpot.description}}</td>
+                <td><a class="pure-button mainBTN" href="https://www.google.com/maps?q={{hotSpot.location[0]}},{{hotSpot.location[1]}}" >Click to Open in Google Maps</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="error" id="class"></div>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
