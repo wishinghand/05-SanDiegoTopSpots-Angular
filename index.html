@@ -17,6 +17,11 @@
             </tr>
         </thead>
         <tbody>
+        <tr>
+            <td><input type="text" placeholder="Name"></td>
+            <td><input type="text" placeholder="Description"></td>
+            <td><input type="text" placeholder="Latitude, longitude"></td>
+        </tr>
             <tr ng-repeat="hotSpot in hotSpots">
                 <td>{{hotSpot.name}}</td>
                 <td>{{hotSpot.description}}</td>

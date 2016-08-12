@@ -3,12 +3,11 @@ angular.module('app', []);
 
 //new controller
 angular.module('app').controller('HomeCtrl', function($scope, hotSpotsFactory){
-    // var ctrl = this;
-    // ctrl.topSpots = [];
     hotSpotsFactory.listSpots(function (topSpots) {
         $scope.hotSpots = topSpots.data;
     })
 });
+
 
 angular.module('app').factory('hotSpotsFactory', function($http){
     return {
@@ -19,4 +18,4 @@ angular.module('app').factory('hotSpotsFactory', function($http){
         }).then(response, error);
         }
     }
-})
+});
