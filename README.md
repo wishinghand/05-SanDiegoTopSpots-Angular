@@ -1,6 +1,6 @@
-Day 6 of Origin Code Academy:
+# Day 6 of Origin Code Academy:
 
-Top Spots of San Diego (using Angular)
+## Top Spots of San Diego (using Angular)
 
 This is the same as the last project, but using Angular. To sum up- it retrieves external JSON data and displays it in a table of popular hot spots in San Diego and also links some of the data to a Google Map location.
 
