@@ -3,12 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Angular HotSpots</title>
-    <link rel="stylesheet" href="bower_components/pure/pure.css">
+    <!-- <link rel="stylesheet" href="bower_components/pure/pure.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body ng-controller="HomeCtrl">
-    <table class="pure-table pure-table-striped pure-table-bordered pure-table-horizontal">
+<body ng-controller="HomeCtrl as hc">
+    <div class="content level">
+        <h1 class="title is-1 level-item">San Diego Top Spots</h1>
+    </div>
+    <div class="box control is-horizontal level">
+        <label for="">Name
+            <input type="text" class="input level-item" placeholder="Some Rad Place" ng-model="hc.place.name">   
+        </label>
+
+        <label for="">Description
+            <input type="text" class="input level-item" placeholder="Tell me a little about it" ng-model="hc.place.description">
+        </label>
+
+        <label for="">Longitude
+            <input type="number" class="input level-item" placeholder="32.4329" ng-model="hc.place.location[0]">
+        </label>
+
+        <label for=""> Latitude
+            <input type="number" class="input level-item" placeholder="-117.4329" ng-model="hc.place.location[1]">
+        </label>
+
+        <button class="button is-primary" ng-click="hc.createPlace();">Submit New Place</button>
+        
+        
+    </div>
+    <table class="table is-striped">
         <thead>
             <tr>
                 <th>Name</th>
@@ -17,20 +42,17 @@
             </tr>
         </thead>
         <tbody>
-        <tr>
-            <td><input type="text" placeholder="Name"></td>
-            <td><input type="text" placeholder="Description"></td>
-            <td><input type="text" placeholder="Latitude, longitude"></td>
-        </tr>
-            <tr ng-repeat="hotSpot in hotSpots">
-                <td>{{hotSpot.name}}</td>
-                <td>{{hotSpot.description}}</td>
-                <td><a class="pure-button mainBTN" href="https://www.google.com/maps?q={{hotSpot.location[0]}},{{hotSpot.location[1]}}" >Click to Open in Google Maps</a></td>
+            <tr ng-repeat="place in hc.place">
+                <td>{{place.name}}</td>
+                <td>{{place.description}}</td>
+                <td><a class="button is-medium is-primary is-outlined" href="https://www.google.com/maps?q={{place.location[0]}},{{place.location[1]}}" target="_blank">Click to Open in Google Maps</a></td>
+                <td><button class="button is-danger" ng-click="hc.deletePlace();">Delete this Location</button></td>
             </tr>
         </tbody>
     </table>
-    <div class="error" id="class"></div>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="index.js"></script>
+    <script src="js/app.module.js"></script>
+    <script src="js/app.controller.js"></script>
+    <script src="js/app.factory.js"></script>
 </body>
 </html>
